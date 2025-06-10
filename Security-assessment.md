@@ -14,8 +14,6 @@ How I Set It Up:
   cd user-management
   npm install  
   npm start
-  
-Accessed At: [http://localhost:3000](http://localhost:3000)
 
 ## 2. Vulnerability Assessment
 
