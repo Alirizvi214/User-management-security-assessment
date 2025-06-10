@@ -6,9 +6,9 @@ Week: 1
 
 ## 1. Application Setup
 
- Project Used: https://github.com/Pranavk-official/user-management.git
- Stack: Node.js, Express, MongoDB
- How I Set It Up:
+ - Project Used: https://github.com/Pranavk-official/user-management.git
+ - Stack: Node.js, Express, MongoDB
+ - How I Set It Up:
 
  git clone https://github.com/Pranavk-official/user-management.git
  cd user-management
