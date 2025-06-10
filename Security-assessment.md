@@ -37,9 +37,9 @@ Tools Used:
 ## 4. Manual Tests Performed
 
  XSS injection via:
-
+````
   <script>alert('XSS')</script>
-  
+````  
  SQL Injection Test:
 
  - Input: `admin' OR '1'='1`
