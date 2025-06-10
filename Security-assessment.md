@@ -65,4 +65,6 @@ Tools Used:
 - Understood the importance of input validation, secure cookies, and HTTP headers
 - Verified that bcrypt was used for secure password hashing
 
+![](/file:///C:/Users/aliri/OneDrive/Desktop/Internship/Capture.JPG)
+
 
