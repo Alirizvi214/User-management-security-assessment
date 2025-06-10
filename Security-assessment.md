@@ -47,7 +47,6 @@ Tools Used:
  - Checked headers using browser dev tools (Network tab)
  - Observed cookie flags via Application tab in DevTools
 
-
 ## 5. Suggested Fixes
 
 | Issue            | Recommended Fix                                         |
@@ -65,6 +64,9 @@ Tools Used:
 - Understood the importance of input validation, secure cookies, and HTTP headers
 - Verified that bcrypt was used for secure password hashing
 
-![](/file:///C:/Users/aliri/OneDrive/Desktop/Internship/Capture.JPG)
+  
+
+
+![Capture](https://github.com/user-attachments/assets/6b70e820-43c3-443c-9a92-d308dcb83807)
 
 
