@@ -19,9 +19,9 @@ Week: 1
 
 Tools Used:
 
- OWASP ZAP
- Browser DevTools (Chrome)
- Manual testing (custom HTML forms, input payloads)
+ - OWASP ZAP
+ - Browser DevTools (Chrome)
+ - Manual testing (custom HTML forms, input payloads)
 
 ## 3. Vulnerabilities Found
 
@@ -42,10 +42,10 @@ Tools Used:
   
  SQL Injection Test:
 
-   Input: `admin' OR '1'='1`
-   Result: Did not bypass login 
- Checked headers using browser dev tools (Network tab)
- Observed cookie flags via Application tab in DevTools
+ - Input: `admin' OR '1'='1`
+    - Result: Did not bypass login 
+ - Checked headers using browser dev tools (Network tab)
+ - Observed cookie flags via Application tab in DevTools
 
 
 ## 5. Suggested Fixes
@@ -60,9 +60,9 @@ Tools Used:
 
 ## 6. Key Learnings
 
- Learned to identify common web vulnerabilities like XSS, CSRF, and misconfigurations
- Practiced using OWASP ZAP to scan real apps
- Understood the importance of input validation, secure cookies, and HTTP headers
- Verified that bcrypt was used for secure password hashing
+- Learned to identify common web vulnerabilities like XSS, CSRF, and misconfigurations
+- Practiced using OWASP ZAP to scan real apps
+- Understood the importance of input validation, secure cookies, and HTTP headers
+- Verified that bcrypt was used for secure password hashing
 
 
