@@ -12,6 +12,14 @@ const MongoStore = require("connect-mongo");
 const nocache = require("nocache");
 const methodOverride = require("method-override");
 const passport = require("./src/config/passport-config");
+const escapeHtml = require('escape-html');
+const helmet = require('helmet');
+const csurf = require('csurf');
+const appLogger = require('./logger');
+
+
+
+
 
 // Database connection
 const connectDB = require("./src/config/db");
@@ -43,6 +51,12 @@ app.use(expressLayouts);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.set("layout", "./layouts/userLayout");
+app.locals.escape = escapeHtml;
+app.use(helmet());
+app.use(cookieParser());
+
+
+
 
 /**
  * Middlewares
@@ -56,25 +70,24 @@ app.use(logger("dev"));
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // nocache for disabling browser caching
 app.use(nocache());
 
 // Session
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    maxAge: 1000,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI,
-      ttl: 1000,
-    }),
-  })
-);
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'fallback-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: 'strict', 
+    maxAge: 1000 * 60 * 60 * 1 // 1 hour
+    }
+}));
+
 
 // passport js
 app.use(flash());
@@ -82,6 +95,14 @@ app.use(flash());
 // passport js
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(csurf({ cookie: false }));
+
+// csrf token availability
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 
 // Routes
 app.use("/", authRouter);
@@ -102,6 +123,14 @@ app.use(function (err, req, res, next) {
   // render the error pagesw
   res.status(err.status || 500);
   res.render("error");
+});
+
+appLogger.info('Application started');
+
+// Example error handling middleware for Express:
+app.use((err, req, res, next) => {
+    appLogger.error(`Error: ${err.message}`);
+    next(err);
 });
 
 module.exports = app;

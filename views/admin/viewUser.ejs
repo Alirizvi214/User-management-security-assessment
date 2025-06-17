@@ -5,8 +5,8 @@
               <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                   <li class="breadcrumb-item active">
-                      <%= user.firstName %>
-                          <%= user.lastName %>
+                      <%= escape(user.firstName) %>
+                          <%= escape(user.lastName) %>
                   </li>
               </ol>
           </nav>
@@ -23,7 +23,7 @@
 <div class="container mt-5" style="max-width: 500px;">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><strong>Full Name : </strong><%= user.firstName + ' ' + user.lastName %></h5>
+        <h5 class="card-title"><strong>Full Name : </strong><%= escape(user.firstName) + ' ' + escape(user.lastName) %></h5>
         <p class="card-text"><strong>Email : </strong><%= user.email %></p>
         <p class="card-text text-secondary"><strong>Created At : </strong><%= user.createdAt.toUTCString() %></p>
         <p class="card-text text-secondary"><strong>Updated At : </strong><%= user.updatedAt.toUTCString() %></p>
@@ -41,7 +41,7 @@
           </div>
           <div class="modal-body">
             <p>
-              This will remove the user record of <b class="fw-bold"><%= user.firstName %> <%= user.lastName %></b><br/>
+              This will remove the user record of <b class="fw-bold"><%= escape(user.firstName) %> <%= escape(user.lastName) %></b><br/>
               Are you sure?
             </p>
           </div>

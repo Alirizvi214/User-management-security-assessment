@@ -4,6 +4,7 @@
     </h1>
 
     <form action="/admin/register" method="POST" class="card-body">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <% if (success.length> 0) { %>
             <div class="alert alert-success alert-dismissible fade show" role="alert">

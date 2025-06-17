@@ -22,10 +22,11 @@
 
 <div class="container card py-5 pb-2 my-5" style="max-width: 550px;">
     <h2 class="text-center">
-        <%= locals.title + ' : ' + user.firstName + ' ' + user.lastName%>
+        <%= locals.title + ' : ' + escape(user.firstName) + ' ' + escape(user.lastName)%>
     </h2>
     <hr>
     <form action="/admin/edit/<%- user._id %>" method="POST" class="card-body">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <% if (success.length> 0) { %>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -95,8 +96,8 @@
                 <div class="modal-body">
                     <p>
                         This will remove the user record of <b class="fw-bold">
-                            <%= user.firstName %>
-                                <%= user.lastName %>
+                            <%= escape(user.firstName) %>
+                                <%= escape(user.lastName) %>
                         </b><br />
                         Are you sure?
                     </p>

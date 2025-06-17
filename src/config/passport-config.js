@@ -6,7 +6,7 @@ const User = require("../model/userSchema");
 
 const customFields = {
   usernameField: "email",
-  passwordField: "password",
+  passwordField: "pwd",
 };
 
 async function authenticateUser(email, password, done) {

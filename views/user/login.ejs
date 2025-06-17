@@ -4,6 +4,7 @@
     </h1>
 
     <form action="/login" method="POST" class="card-body">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <% if (success.length > 0) { %>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -22,6 +23,7 @@
         <label for="pwd" class="form-label">Password</label>
         <div class="input-group">
             <input name="password" type="password" class="form-control" id="pwd" required>
+            <input type="hidden" name="pwd" id="pwd-hidden">
             <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                 <i class="bi bi-eye" aria-hidden="true" id="eye"></i>
             </button>
@@ -46,5 +48,10 @@
             password.setAttribute("type", "password");
             eyeIcon.classList.replace("bi-eye-slash", "bi-eye");
         }
+    });
+
+    // Always sync hidden pwd field for backend compatibility
+    document.getElementById('pwd').addEventListener('input', function() {
+        document.getElementById('pwd-hidden').value = this.value;
     });
 </script>

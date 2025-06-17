@@ -16,12 +16,20 @@ module.exports = {
             res.redirect('/login')
         }
     },
-    isAdminLoggedIn: (req,res,next) => {
-        if(req.user && req.user.isAdmin && req.isAuthenticated()){
-            next()
-        }else {
-            // req.flash('error', 'Not Authorized')
-            res.redirect('/admin/login')
+    isAdminLoggedIn: (req, res, next) => {
+        if (req.isAuthenticated() && req.user && req.user.isAdmin === true) {
+            next();
+        } else {
+            // If a logged-in user is not admin, destroy session and redirect
+            if (req.isAuthenticated() && req.user && !req.user.isAdmin) {
+                req.logout(() => {
+                    req.session.destroy(() => {
+                        res.redirect('/admin/login');
+                    });
+                });
+            } else {
+                res.redirect('/admin/login');
+            }
         }
     },
     isLoggedOut: (req,res,next) => {

@@ -3,7 +3,7 @@
     <div class="card-body">
 
       <p class="h2 card-title">
-        <%= user.firstName + ' ' + user.lastName %>
+        <%= escape(user.firstName) + ' ' + escape(user.lastName) %>
       </p>
 
       <p class="lead">Email: <%= user.email %>

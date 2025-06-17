@@ -24,8 +24,8 @@
             <tbody>
               <% users.forEach(element => { %>
                 <tr class="align-middle">
-                  <td><%= element.firstName %></td>
-                  <td><%= element.lastName %></td>
+                  <td><%= escape(element.firstName) %></td>
+                  <td><%= escape(element.lastName) %></td>
                   <td><%= element.email %></td>
                   <td><%= element.isAdmin %></td>
                   <td>
@@ -61,7 +61,7 @@
               </div>
               <div class="modal-body">
                 <p>
-                  This will remove the user record of <b class="fw-bold"><%= element.firstName %> <%= element.lastName %></b><br/>
+                  This will remove the user record of <b class="fw-bold"><%= escape(element.firstName) %> <%= escape(element.lastName) %></b><br/>
                   Are you sure?
                 </p>
               </div>
