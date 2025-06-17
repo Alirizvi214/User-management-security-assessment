@@ -1,4 +1,5 @@
 The following checklist summarizes the security measures implemented:
+
     - Input validation and sanitization using validator
     - Password hashing using bcrypt
     - Helmet for secure HTTP headers
